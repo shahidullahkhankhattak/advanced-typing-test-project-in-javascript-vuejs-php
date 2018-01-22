@@ -1,0 +1,262 @@
+@font-face {
+    font-family: "clock-font";
+    src: url("../fonts/RADIOLAND.TTF");
+}
+.clock{
+    font-family: "clock-font";
+    width: 200px;
+    font-size: 50px;
+}
+.typing-paragraph{
+    font-size:33px;
+    background:white;
+    padding-left:8px;
+    padding-right:8px;
+    border-bottom:1px solid lightgrey;
+    margin-bottom:10px;
+}
+span{
+    border-radius:6px;
+}
+
+
+.brand-logo{
+    margin-left:10px;
+}
+a{
+    cursor:pointer;
+    cursor:hand;
+}
+.search-nav{
+    display:none;
+}
+.login-box{
+    margin-top:50px;
+    height: 500px;
+    max-width: 450px;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,.15), 0 0 25px rgba(0,0,0,.25);
+    border-radius: 4px;
+}
+.login-logo{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 700;
+    width: 100%;
+}
+.login-txt{
+    text-align: center;
+    font-size: 22px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.canhover{
+    cursor:pointer;
+    cursor:hand;
+}
+.full-width{
+    width: 100%;
+}
+.p10-left{
+    padding-left:10px;
+}
+.main-cat li .sub-cat{
+    display:none;
+}
+.main-cat li:hover > .sub-cat{
+    display:block;
+}
+.collection{
+    overflow:visible !important;
+}
+.txt-capitalize{
+    text-transform:capitalize;
+}
+.breadcrumbhead{
+    height:40px !important;
+    line-height:40px !important;
+}
+.breadcrumb{
+    font-size:12px;
+}
+select{
+    display:block;
+}
+
+/*  Popup box */
+.progress{
+    margin:0 !important;
+}
+.popupbox{
+    z-index:1001;
+    max-width:400px;
+    background:white;
+    position:absolute;
+    top:0;
+    bottom:0;left:0;right:0;
+    margin:auto;
+    border-radius:4px;
+    height:60px;
+    overflow:hidden;
+}
+.popupbox header{
+    height:60px;width:100%;
+    border-top-right-radius:4px;
+    border-top-left-radius:4px;
+}
+.popupbox header .header-text{
+    font-size:18px;
+    font-weight:400;
+    margin-left:20px;
+    color:white;
+}
+.popupbox header button{
+    height:25px;width:25px;background:transparent;border:none;outline:none;border-radius:50%;color:white;padding:0;margin:0;
+    position:absolute;
+    right:15px;
+    top:18px;
+    cursor:hand;cursor:pointer;
+}
+.popupbox .content{
+    padding-left:15%;
+    padding-right:15%;
+    padding-top:15px;
+}
+.popupblackout{
+    width:100%;
+    height:100%;
+    position:fixed;
+    background:rgba(255,255,255,0.8);
+    top:0;
+    left:0;
+}
+.popupbox input{
+    width:100%;
+}
+/* --- Transition Animations of routes and components --- */
+.slidefade-enter-active, .slidefade-leave-active {
+    transition: all 0.5s ease;
+}
+.slidefade-enter, .slidefade-leave-to {
+    transform: translateY(-150px);
+    opacity: 0;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: all 0.5s ease;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+.slidefadesmall-enter-active, .slidefadesmall-leave-active {
+    transition: all 0.5s ease;
+}
+.slidefadesmall-enter, .slidefadesmall-leave-to {
+    transform: translateY(-10px);
+    opacity: 0;
+}
+
+input[type='date'] {
+    appearance: textfield;
+}
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-outer-spin-button,
+input[type='date']:hover::-webkit-inner-spin-button,
+input[type='date']:hover::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+
+input[type='number'] {
+    appearance: textfield;
+}
+
+
+input[type='time']::-webkit-inner-spin-button,
+input[type='time']::-webkit-outer-spin-button,
+input[type='time']:hover::-webkit-inner-spin-button,
+input[type='time']:hover::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+
+.greyout{
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background:rgba(0,0,0,0.97);
+    z-index:1005;
+}
+.loader{
+    position:fixed;
+    height:105px;
+    width:105px;
+    padding:20px;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    z-index:1006;
+    background:#fff;
+    box-shadow: 0 0 15px rgba(0,0,0,.25), 0 0 15px rgba(0,0,0,.25);
+}
+.typed-words{
+    background:white !important;
+    padding-left:8px !important;
+    border-radius:7px !important;
+    -moz-border-radius: 7px !important;
+    -webkit-border-radius: 7px !important;
+    -op-border-radius: 7px !important;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1), 0px 0px 15px rgba(0,0,0,0.1) !important;
+    border-bottom-width: 2px !important;
+    font-weight:bold;
+}
+
+.blink{
+    -webkit-animation-name: blink;
+    -moz-animation-name: blink;
+    -o-animation-name: blink;
+    animation-name: blink;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    background:#546e7a;
+}
+.blink-text{
+    -webkit-animation-name: blink-text;
+    -moz-animation-name: blink-text;
+    -o-animation-name: blink-text;
+    animation-name: blink-text;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    color:red;
+}
+@keyframes blink{
+    0%{
+        background: #546e7a;
+    }
+    50%{
+        background:red;
+    }
+    100%{
+        background:#546e7a;
+    }
+}
+
+@keyframes blink-text {
+    0%{
+        color:white;
+        text-shadow: 0px 0px 10px red;
+    }
+    50%{
+        color:white;
+    }
+    100%{
+        color:white;
+        text-shadow: 0px 0px 10px red;
+    }
+}

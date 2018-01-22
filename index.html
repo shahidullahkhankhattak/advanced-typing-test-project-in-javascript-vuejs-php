@@ -1,0 +1,156 @@
+<html>
+  <head>
+    <base href="/typingtest/">
+    <title>Typing test</title>
+    <meta charset="utf8">
+    <meta name="viewport" conntent="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/materialize.min.css">
+    <link rel="stylesheet" href="./css/custom.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <div  id="typing-application">
+      <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4 id="modal-header">Modal Header</h4>
+            <p id="modal-body">A bunch of text</p>
+          </div>
+          <div class="modal-footer" id="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+          </div>
+      </div>
+      <transition name="fade" mode="out-in">
+          <router-view></router-view>
+      </transition>
+    </div>
+    <script type="text/x-template" id="typing-test-template">
+      <div>
+        <nav>
+          <div class="nav-wrapper blue darken-3">
+            <a href="#" class="brand-logo center">SHAHID TYPING TEST</a>
+          </div>
+        </nav>
+        <div class="container">
+          <transition name="fade" mode="out-in">
+            <div class="greyout" v-if="loading"></div>
+          </transition>
+          <transition name="slidefade" mode="out-in">
+            <div class="loader" v-if="loading">
+              <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </transition>
+          <div class="typing-test" v-if="result.announced === false">
+            <div :class="remaining_time > 9 ? 'card blue-grey darken-1 full-width' : 'card blue-grey darken-1 full-width blink'">
+              <div class="card-content white-text" align="center">
+                <p style="font-size:18px;margin-bottom:20px;">Time Remaining</p>
+                <span class="card-title txt-capitalize">
+                  <div :class="remaining_time > 9 ? 'clock': 'clock'">
+                    {{(Math.floor(remaining_time/60).toFixed())}}:{{pad(remaining_time % 60)}}
+                  </div>
+                </span>
+              </div>
+            </div>
+            <div align="center">
+            </div>
+            <div align="center" class="blue lighten-4" style="padding:10px;font-size:20px;margin-top:-15px;">
+              correct words: {{correct}}, incorrect words: {{incorrect}}, character pressed: {{character_pressed}},
+              WPM: <b :class="wpm >= 60 ? 'green-text' :  wpm >= 40 ? 'orange-text' : 'red-text' ">{{wpm.toFixed()}}</b>,
+               accuracy: {{result.accuracy}}
+            </div>
+            <div class="typing-paragraph" v-html="paragraphHTML">
+            </div>
+            <input  type="text" placeholder="Write Here" class="typed-words" v-model="typedWord" v-on:keyup="init()" autofocus>
+          </div>
+          <div v-else class="result">
+            <div align="center" style="font-size:25px;padding:10px;margin-bottom:40px;margin-top:40px;">
+              <b>Result</b>
+            </div>
+            <table class="responsive-table">
+              <thead>
+                <th>Total Characters Typed</th>
+                <th>Total Correct Characters Typed</th>
+                <th>Total Incorrect Characters Typed</th>
+                <th>No. of Correct Words Typed</th>
+                <th>No. of Incorrect Words Typed</th>
+                <th>Correct Words Typed</th>
+                <th>Incorrect Words Typed</th>
+                <th>Accuracy</th>
+                <th>WPM</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{result.total_characters}}</td>
+                  <td>{{result.correct_characters}}</td>
+                  <td>{{result.incorrect_characters}}</td>
+                  <td>{{result.correct_words.length}}</td>
+                  <td>{{result.incorrect_words.length}}</td>
+                  <td>{{result.correct_words.join(", ")}}</td>
+                  <td>{{result.incorrect_words.join(", ")}}</td>
+                  <td>{{result.accuracy}}</td>
+                  <td><b :class="result.wpm >= 60 ? 'green-text' :  result.wpm >= 40 ? 'orange-text' : 'red-text' ">{{result.wpm}}</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/x-template" id="login-template">
+      <div class="section">
+        <div class="container" align='center'>
+          <div  class="login-box">
+            <transition name="slidefadesmall" mode="out-in">
+              <div class="progress" v-if="loading">
+                <div class="indeterminate"></div>
+              </div>
+            </transition>
+            <div  class="login-logo">
+              SHAHID TYPING TEST
+            </div>
+            <div  class="login-txt">
+              Login Below
+            </div>
+            <br >
+            <form v-on:submit.prevent="login()">
+              <div class="input-field dirty">
+                <i  class="material-icons prefix" style="margin-top:11px;">&#xE870;</i>
+                <input  mz-input="" v-model="email" maxlength="13" name="email" placeholder="Enter Your Cnic. . " type="text" >
+                <label for="" class="active"></label>
+              </div>
+              <div class="input-field dirty">
+                <i  class="material-icons prefix" style="margin-top:11px;">&#xE8A6;</i>
+                <input  mz-input="" v-model="password" name="password" placeholder="Enter Your Roll No . . " type="text" >
+                <label for="" class="active"></label>
+              </div>
+              <div  class="row">
+                <div  class="col s12 m12">
+                  <button  mz-button="" style="width:100%;" type="submit" class="btn btn-large waves-effect waves-light">
+                    <i  class="material-icons" style="float:left;"></i>
+                    Login
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </script>
+  </body>
+  <script src="./js/jquery.js"></script>
+  <script type="text/javascript" src="./js/materialize.min.js"></script>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <script type="text/javascript" src="js/vue-router.js"></script>
+  <script type="text/javascript" src="js/vue-http.js"></script>
+  <script type="text/javascript" src="js/process.js"></script>
+</html>
